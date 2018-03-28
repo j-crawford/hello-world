@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>"My Webpage"</title>
+</head>
+<body>
+
+        <h2>The XMLHttpRequest Object</h2>
+
+<p id="demo"> mama</p>
+ <p id="other">testing </p>
+    <p id="third">status </p>
+    <script>
+    var xhttp, xmlDoc, txt, x, i;
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            document.getElementById("other").innerHTML += this.readyState + " ";
+            document.getElementById("third").innerHTML += this.status + " ";
+            if (this.readyState == 4 && this.status == 200) {
+                //xmlDoc = this.responseXML;
+                //txt = "";
+                var myobj = this.responseText;
+                //x = xmlDoc.getElementsByTagName("ID");
+                //for (i = 0; i < x.length; i++) {
+                //    txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+                //}
+                document.getElementById("demo").innerHTML += myobj;
+                document.getElementById("other").innerHTML = "testing, testing";
+            }
+        };
+        var url = "http://anyorigin.com/go?url=" + encodeURIComponent("https://www.metaweather.com/api/location/search/?query=salt") + "&callback=?";
+        xhttp.open("GET", url, true);
+        xhttp.send();
+
+    </script>
+    
+</body>
+</html>
